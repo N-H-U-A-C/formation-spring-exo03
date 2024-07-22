@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Students | Home Page</title>
+    <link th:rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+<header>
+    <nav>
+        <a th:fragment="navList" th:href="@{/students}">Students List</a>
+        <a th:fragment="navRegistration" th:href="@{/students/save}">Registration</a>
+        <div th:fragment="navSearch">
+            <form th:action="@{/students}" th:method="get">
+                <input type="text" id="lastName" name="lastName" placeholder="Please enter a last name">
+                <input type="submit" value="Search" />
+            </form>
+        </div>
+    </nav>
+</header>
+<main>
+    <h1>Welcome!</h1>
+    <p>Welcome to the students website!</p>
+</main>
+</body>
+</html>

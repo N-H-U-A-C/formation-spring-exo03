@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Students | Students List</title>
+</head>
+<body>
+<header>
+    <nav>
+        <a th:fragment="navHomePage" th:href="@{/}">Home Page</a>
+    </nav>
+</header>
+<main>
+    <h1>Students List</h1>
+    <ul th:block th:fragment="displayStudents" th:if="${!students.isEmpty()}">
+        <li th:each="student : ${students}">
+            <span th:text="${student.getFirstName()}"></span>
+            <span th:text="${student.getLastName()}"></span>
+            <a th:href="@{/students/{id}(id=${student.getId()})}">
+                <button>Detail</button>
+            </a>
+        </li>
+    </ul>
+</main>
+</body>
+</html>

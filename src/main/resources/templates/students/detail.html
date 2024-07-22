@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Students | Student Detail</title>
+</head>
+<body>
+<header>
+    <nav>
+        <a th:replace="~{/homePage::navList}"></a>
+        <a th:replace="~{/students/list::navHomePage}"></a>
+    </nav>
+</header>
+<main>
+    <h1>Student detail</h1>
+    <p>First name: <span th:text="${student.get().getFirstName()}"></span></p>
+    <p>Last name: <span th:text="${student.get().getLastName()}"></span></p>
+    <p>Email: <span th:text="${student.get().getEmail()}"></span></p>
+    <p>Date of birth: <span th:text="${student.get().getDateOfBirth()}"></span></p>
+    <a th:href="@{/students/update/{id}(id=${student.get().getId()})}">
+        <button>Update</button>
+    </a>
+    <a th:href="@{/students/delete/{id}(id=${student.get().getId()})}">
+        <button>Delete</button>
+    </a>
+</main>
+</body>
+</html>

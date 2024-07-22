@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<header>
+    <nav>
+        <a th:replace="~{/students/list::navHomePage}"></a>
+    </nav>
+</header>
+<main>
+    <h1>Search Results</h1>
+    <ul th:replace="/students/list::displayStudents"></ul>
+    <p th:unless="${!students.isEmpty()}">No result!</p>
+</main>
+</body>
+</html>
