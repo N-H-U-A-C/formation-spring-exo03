@@ -1,5 +1,9 @@
 package dev.cb.students.business.domain;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -7,11 +11,21 @@ import java.util.UUID;
 
 public class Student {
 
+//    @Size(min = 36, max = 36)
     private UUID id;
+
+    @NotBlank(message = "First name may not be null or blank")
     private String firstName;
+
+    @NotBlank(message = "Last name may not be null or blank")
     private String lastName;
+
+    @NotBlank(message = "Email may not be null")
+//    @Email(message = "Must be a valid email")
     private String email;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @NotNull(message = "Date of birth may not be null")
     private LocalDate dateOfBirth;
 
     public Student() {

@@ -2,8 +2,10 @@ package dev.cb.students.controller;
 
 import dev.cb.students.business.domain.Student;
 import dev.cb.students.business.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
@@ -26,9 +28,13 @@ public class StudentController {
     }
 
     @PostMapping("/save")
-    public String save(@ModelAttribute Student student) {
-        studentService.save(student);
-        return "redirect:/students";
+    public String save(@Valid @ModelAttribute Student student, BindingResult bindingResult) {
+        if (!bindingResult.hasErrors()) {
+            studentService.save(student);
+            return "redirect:/students";
+        } else {
+            return "students/form";
+        }
     }
 
     @GetMapping()
