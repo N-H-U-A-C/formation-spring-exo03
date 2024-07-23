@@ -1,5 +1,7 @@
 package dev.cb.students.business.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -9,6 +11,7 @@ public class Student {
     private String firstName;
     private String lastName;
     private String email;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
 
     public Student() {

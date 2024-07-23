@@ -34,10 +34,11 @@ public class StudentController {
     @GetMapping()
     public String getAllByLastName(@RequestParam(name = "lastName", required = false) String lastName,
                                    Model model) {
-        model.addAttribute("students", studentService.getAllByLastName(lastName));
         if (lastName == null) {
+            model.addAttribute("students", studentService.getAll());
             return "/students/list";
         } else {
+            model.addAttribute("students", studentService.getAllByLastName(lastName));
             return "/students/search";
         }
     }

@@ -10,6 +10,8 @@ public interface StudentService {
 
     boolean save(Student student);
 
+    List<Student> getAll();
+
     List<Student> getAllByLastName(String lastName);
 
     Optional<Student> getById(UUID id);

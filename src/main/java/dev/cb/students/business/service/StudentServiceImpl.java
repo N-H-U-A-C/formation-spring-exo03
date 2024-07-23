@@ -26,23 +26,24 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public boolean save(Student student) {
         student.setId(UUID.randomUUID());
-        return this.students.add(student);
+        return students.add(student);
     }
 
     @Override
     public Optional<Student> getById(UUID id) {
-        return this.students.stream().filter(student -> student.getId().equals(id)).findFirst();
+        return students.stream().filter(student -> student.getId().equals(id)).findFirst();
+    }
+
+    @Override
+    public List<Student> getAll() {
+        return students;
     }
 
     @Override
     public List<Student> getAllByLastName(String lastName) {
-        if (lastName == null) {
-            return students;
-        } else {
-            return students.stream()
-                    .filter(student -> student.getLastName().toLowerCase().contains(lastName.toLowerCase()))
-                    .toList();
-        }
+        return students.stream()
+                .filter(student -> student.getLastName().toLowerCase().contains(lastName.toLowerCase()))
+                .toList();
     }
 
     @Override
@@ -52,6 +53,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public boolean delete(UUID id) {
-        return this.students.removeIf(student -> student.getId().equals(id));
+        return students.removeIf(student -> student.getId().equals(id));
     }
 }
